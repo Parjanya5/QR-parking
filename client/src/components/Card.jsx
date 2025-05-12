@@ -1,0 +1,74 @@
+import React from 'react';
+import { MdSearch } from 'react-icons/md';
+import { FiDownload } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import {  toast } from 'react-toastify';
+
+
+function CarItem({ car }) {
+
+  const navigate = useNavigate();
+  // const image1 = URL.createObjectURL(car.image)
+
+  const deleteCardData = async () => {
+    try {
+      const response = await fetch(`http://localhost:4500/delete/${car._id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        console.log("Car deleted successfully");
+        // window.location.reload();
+        toast.success("Car deleted successfully");
+        navigate('/');
+        setTimeout(()=>{
+          window.location.reload()
+        },4000)
+
+      } else {
+        console.error("Failed to delete car");
+        toast.error("Failed to delete car");
+      }
+    } catch (err) {
+      console.error("Error deleting car:", err);
+    }
+  };
+
+  const handleedit = ()=>{
+      navigate('/editcar', {state: {car}})
+  }
+
+  return (
+    <>
+  <div class="card mb-3 pb-4 " style={{width: "520px;"}}>
+  <div class="row g-2">
+    <div class="col-md-4">
+      <div className='d-flex flex-column align-items-center gap-1 bg-light p-4'>
+      <img src={car.qrdataurl} class="img-fluid rounded-start w-50" alt="..." />
+      <b><MdSearch className='px-1 fs-3'/>Search owner</b>
+      <a href={car.qrdataurl} download={`your Qr ${car.vehicle}`} className='btn btn-sm btn-primary'><FiDownload className='px-1 fs-4'/>Download QR</a>
+      </div>
+    </div>
+    <div class="col-md-8 ">
+      <div class="card-body  bg-light">
+        <div>
+        <img src={car.image} alt="QR Code" className="img-fluid rounded mb-2" width={'150px'}/>
+        </div>
+        <h5 class="card-title fw-bold ">{car.name}</h5>
+        <p class="card-text" ><small class="text-body-secondary fw-bolder">Vehicle no : {car.vehicle}</small></p>
+        <p class="card-text"><small class="text-body-secondary fw-bolder">Vehicle color : {car.color}</small></p>
+        <p class="card-text"><small class="text-body-secondary fw-bolder">Contact : {car.phone}</small></p>
+        <p class="card-text"><small class="text-body-secondary fw-bolder">Model : {car.model}</small></p>
+        <p class="card-text">{!car.message=="" ?`Message : ${car.message}` : `Hello User ! This is My car  ${car.model}  on ${car.color} color , So  i approve your request please contact to me on my given number `}</p>
+      <div className="d-flex gap-3 justify-content-evenly pb-1">
+           <button className='btn btn-warning text-white' onClick={handleedit}>Edit</button>
+           <button className='btn btn-danger' onClick={deleteCardData}>Delete</button>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </>
+  );
+}
+
+export default CarItem;

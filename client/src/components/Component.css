@@ -1,0 +1,57 @@
+.signup-bg {
+    background: linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%);
+    box-shadow: 10px 10px 5px 0px rgba(53, 52, 52, 0.75);
+}
+@keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+   @media (max-width: 768px) {
+  .hide-on-desktop {
+    display: none !important;
+  }
+}
+
+  .animated-heading {
+    animation: fadeSlideIn 0.8s ease-out forwards;
+  }
+
+  .custom-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  
+  .custom-scroll {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  .custom-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+  .custom-scroll::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 4px;
+  }
+
+  .margin-padding {
+    margin : 0 auto;
+  }
+
+  .update-bg{
+    background-image: linear-gradient( 106.7deg,  rgba(255,199,67,1) 103.7%, rgba(255,247,200,1) 120.7% );
+    box-shadow: 10px 10px 5px 0px rgba(53, 52, 52, 0.75);
+  }
+  
+   
