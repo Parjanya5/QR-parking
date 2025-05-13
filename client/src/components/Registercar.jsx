@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import './component.css'
+import './Component.css'
 import { toast } from 'react-toastify';
 
 function Registercar() {
