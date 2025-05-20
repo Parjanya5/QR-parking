@@ -40,7 +40,7 @@ function Navbar() {
             </Link>
             <ul className="dropdown-menu bg-light bg-opacity-50 gap-5">
               <li><Link className="dropdown-item bg-light opacity-50" to={'/signup'}><span className='d-flex gap-2 align-items-center justify-content-center'><FaUser/>Sign-up User</span></Link></li>
-              <li><Link className="dropdown-item bg-light opcatiy-50" to={'signin'}><span className='d-flex gap-2 align-items-center justify-content-center'><FaUser/>Sign-in User</span></Link></li>
+              <li><Link className="dropdown-item bg-light opcatiy-50" to={'/'}><span className='d-flex gap-2 align-items-center justify-content-center'><FaUser/>Sign-in User</span></Link></li>
             </ul>
           </li>
         </ul>

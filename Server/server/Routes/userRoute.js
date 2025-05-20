@@ -1,5 +1,6 @@
 import express from 'express'
-import { usernormal, userGet , userPost , userUpdate, userDelete } from '../Controllers/UserController.js';
+import { usernormal, userGet , userPost , userUpdate, userDelete , userfind , userGetToken} from '../Controllers/UserController.js';
+import { fetchUser } from '../Middleware/fetchUser.js';
 
 
 const app = express();
@@ -12,6 +13,9 @@ router.get('/',usernormal)
 // get User data
 router.get('/get',userGet)
 
+// Find user
+router.post('/login', userfind)
+
 // Post user login data
 router.post('/post',userPost)
 
@@ -21,5 +25,7 @@ router.put('/put/:id',userUpdate)
 // Delete user login data
 router.delete('/delete/:id',userDelete)
 
+// post user token
+router.post('/token',fetchUser,userGetToken)
 
 export default router;

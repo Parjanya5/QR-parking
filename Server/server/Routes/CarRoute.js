@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path';
 import { type } from 'os';
 import { normaldata,Getdata,postdata,updatedata,deletedata,findingdata } from '../Controllers/Carcontroller.js';
+import { fetchUser } from '../Middleware/fetchUser.js';
 
 const app = express();
 const Router = express.Router()
@@ -19,19 +20,19 @@ Router.get('/find/:id',findingdata)
 
 // get request
 
-Router.get('/Get', Getdata)
+Router.get('/Get',fetchUser, Getdata)
 
 
 //  post request routes 
-Router.post('/post',postdata)
+Router.post('/post',fetchUser,postdata)
 
 
 // Update Request
 
-Router.put('/put/:id',updatedata)
+Router.put('/put/:id',fetchUser,updatedata)
 
 // Delete user
-Router.delete('/delete/:id',deletedata)
+Router.delete('/delete/:id',fetchUser,deletedata)
 
 
 export default Router;

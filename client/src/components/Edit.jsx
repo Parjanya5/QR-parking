@@ -60,14 +60,15 @@ function Edit() {
         const process = await fetch(url,{
           method: 'PUT',
           headers: {
-            "Content-Type" : 'application/json'
+            "Content-Type" : 'application/json',
+            'auth-token' : localStorage.getItem('token')
           },
           body : JSON.stringify(datameta)
         })
         const data = await process.json();
         console.log(data.message , 'data update succesfully');
         toast.success('Data Updated Successfully')
-        navigate('/')
+        navigate('/home')
       } catch (error) {
          console.log(`facing some error on update data `, error.message)
          toast.error('Facing some error on update data ')

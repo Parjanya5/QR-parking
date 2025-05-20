@@ -18,9 +18,15 @@ function Home() {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const apiurl = `http://localhost:4500/get`;
+      const apiurl = `http://localhost:4500/get` ;
       try {
-        const res = await fetch(apiurl);
+        const res = await fetch(apiurl , {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'auth-token' : localStorage.getItem('token')
+          }
+        })
         const data = await res.json();
         console.log(data);
         console.log(data[0]._id)
@@ -42,7 +48,7 @@ function Home() {
              <Button />
             </div>
           </div>
-          <div className="col-12 col-lg-9 col-sm-6col-md-12 col-xl-9">
+          <div className="col-12 col-lg-9 col-sm-6col-md-12 col-xl-9 ">
             <div className="card overflow-auto custom-scroll bg-secondary bg-opacity-25" style={{height:'570px'}}> 
             {!carinfo? <Spinner loader={loding}/> :  carinfo=="" ? <Spinner loader={loding}/> :  carinfo && carinfo.map((car, index) => (
             <Card key={index} car={car} />

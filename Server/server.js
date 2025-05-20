@@ -5,6 +5,7 @@ import Router1 from './server/Routes/userRoute.js'
 import dotenv from 'dotenv';    
 import logger from './server/Middleware/logger.js';
 import cors from "cors";
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -21,8 +22,11 @@ app.use(express.static('/server'))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-app.use(cors());
+app.use(cors({
+  origin: '*',  // Temporarily allow all origins for testing (for production, restrict this to your Vercel URL or mobile app domain)
+}));
 
 
 app.use('/',Router);

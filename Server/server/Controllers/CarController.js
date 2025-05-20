@@ -2,52 +2,8 @@ import express from 'express'
 import path from 'path';
 import mongoose from 'mongoose'
 import QRCode from 'qrcode'
-import twilio from 'twilio'
 import { type } from 'os';
-
-
-
-
-mongoose.connect(`mongodb+srv://parjanyakumar8:4ZUmFtjg4kHiHeZb@scan-your-car.o8qtbmf.mongodb.net/?retryWrites=true&w=majority&appName=Scan-your-car`,{
-    useNewUrlParser : true,
-    useUnifiedTopology : true
-})
-
-.then(()=> console.log('Connected to mongodb with car routes'))
-.catch(()=> console.log(`Facing error with mongo data`))
-
-
-//  Mongoose.Schema   
-
-const setSchema = new mongoose.Schema({
-    name : {
-        type : String,
-    },
-    phone : {
-       type : String
-    },
-    vehicle : {
-        type: String
-    },
-    image : {
-        type : String
-    },
-    qrdataurl : {
-        type : String
-    },
-    color:{
-        type : String
-    },
-    model:{
-        type : String
-    },
-    message:{
-        type : String
-    }
-})
-
-// Mongoose Model
-const User = mongoose.model('User', setSchema) ; 
+import { User } from '../models/Carmodals.js';
 
 
 // Find data by id 
@@ -71,7 +27,7 @@ export const normaldata = (req,res)=>{
 // GET DATA
 
 export const Getdata = async (req,res)=>{
-    const data = await User.find();
+    const data = await User.find({user : req.user.id});
     try {
         if(data.length>0){
          return res
@@ -99,18 +55,24 @@ export const Getdata = async (req,res)=>{
        .status(400)
        .json({message:'req.body not passes data to post request'})
     }
+
+    const {name , model , phone , vehicle , image , color, qrdataurl , message} = req.body
     try {
-        const cardata = new User(req.body)
+        const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
         const qrText = `http://localhost:5173/Qrscan/${cardata._id}`;
+        const qrmeta = await QRCode.toDataURL(`tel:${cardata.phone}`);
+
         const qrCodeUrl = await QRCode.toDataURL(qrText);
         console.log(`my new id`,cardata._id);
-        cardata.model = req.body.model.toUpperCase();
+        cardata.model = req.body.model;
         cardata.qrdataurl = qrCodeUrl;
+        cardata.qrdata = qrmeta;
         cardata.image = `https://clipart-library.com/img1/1060318.png`
        await cardata.save();
        console.log("data set succesfully")
         return res
         .status(200)
+        .json({message:'succesfully post data on car routes'})
     } catch (error) {
         console.log(error,'Facing error with Post data on car route')
         return res

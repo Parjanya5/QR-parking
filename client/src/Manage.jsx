@@ -21,9 +21,9 @@ import QrReadpage from './page/QrReadpage'
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Mainlayout/>}>
-            <Route index element={<Homepage/>}/>
+            <Route index element={<SigninPage/>}/>
             <Route path='/signup' element={<SignupPage/>}/>
-            <Route path='/signin' element={<SigninPage/>} />
+            <Route path='/Home' element={<Homepage/>} />
             <Route path='/editcar' element={<Editpage/>} />
             <Route path='/about' element={<Aboutpage/>} />
             <Route path='/Registercar' element={<RegisterCarpage/>} />

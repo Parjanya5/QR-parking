@@ -3,6 +3,7 @@ import { MdSearch } from 'react-icons/md';
 import { FiDownload } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import {  toast } from 'react-toastify';
+import "./Component.css";
 
 
 function CarItem({ car }) {
@@ -14,12 +15,16 @@ function CarItem({ car }) {
     try {
       const response = await fetch(`http://localhost:4500/delete/${car._id}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token' : localStorage.getItem('token')
+        }
       });
       if (response.ok) {
         console.log("Car deleted successfully");
         // window.location.reload();
         toast.success("Car deleted successfully");
-        navigate('/');
+        navigate('/home');
         setTimeout(()=>{
           window.location.reload()
         },4000)
@@ -39,13 +44,20 @@ function CarItem({ car }) {
 
   return (
     <>
-  <div class="card mb-3 pb-4 " style={{width: "520px;"}}>
+  <div class="card mb-3 pb-4 " style={{width: "540px;"}}>
   <div class="row g-2">
-    <div class="col-md-4">
+    <div class="col-md-4 ">
       <div className='d-flex flex-column align-items-center gap-1 bg-light p-4'>
+        <b>After email alert <br/> scanner person get your information</b>
       <img src={car.qrdataurl} class="img-fluid rounded-start w-50" alt="..." />
       <b><MdSearch className='px-1 fs-3'/>Search owner</b>
       <a href={car.qrdataurl} download={`your Qr ${car.vehicle}`} className='btn btn-sm btn-primary'><FiDownload className='px-1 fs-4'/>Download QR</a>
+      </div>
+      <div className='d-flex mt-2 flex-column align-items-center gap-1 bg-light p-4'>
+        <b>Scanner person direct call to you</b>
+      <img src={car.qrdata} class="img-fluid rounded-start w-50" alt="..." />
+      <b><MdSearch className='px-1 fs-3'/>Search owner</b>
+      <a href={car.qrdata} download={`your Qr ${car.vehicle}`} className='btn btn-sm btn-primary'><FiDownload className='px-1 fs-4'/>Download QR</a>
       </div>
     </div>
     <div class="col-md-8 ">
