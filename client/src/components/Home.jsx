@@ -9,16 +9,17 @@ import "./Component.css";
 import Button from "./Button";
 import { useMediaQuery } from 'react-responsive';
 import Spinner from "./Spinner";
+const url = import.meta.env.REACT_APP_URL;
 
 function Home() {
   const [loding,setloading] = useState(false);
-    
+    console.log(url,' i am url')
   const [carinfo, setcarinfo] = useState();
    const isWide = useMediaQuery({ minWidth: 768 }); // adjust as needed
 
   useEffect(() => {
     const fetchdata = async () => {
-      const apiurl = `http://localhost:4500/get` ;
+      const apiurl = `https://qr-parking-vzxn.onrender.com/get` ;
       try {
         const res = await fetch(apiurl , {
           method: 'GET',

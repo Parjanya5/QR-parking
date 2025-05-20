@@ -55,7 +55,7 @@ function Edit() {
     //  }
 
     const updatedata = async ()=>{
-      const url = `http://localhost:4500/put/${car._id}`
+      const url = `https://qr-parking-vzxn.onrender.com/put/${car._id}`
       try {
         const process = await fetch(url,{
           method: 'PUT',

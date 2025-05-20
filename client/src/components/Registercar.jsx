@@ -16,7 +16,7 @@ function Registercar() {
 
   const registerdata = async (e) =>{
     e.preventDefault();
-      const apiurl = `http://localhost:4500/post`
+      const apiurl = `https://qr-parking-vzxn.onrender.com/post`
     try {
        const posting = await fetch(apiurl,{
       method:'POST',

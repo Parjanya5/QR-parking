@@ -21,7 +21,7 @@ function Createuser() {
     }
 
     try {
-       const fetches = await fetch(`http://localhost:4500/user/post` , {
+       const fetches = await fetch(`https://qr-parking-vzxn.onrender.com/user/post` , {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',

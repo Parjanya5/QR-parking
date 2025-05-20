@@ -20,7 +20,7 @@ function Login() {
         return;
     }
        try {
-         const fetching = await fetch(`http://localhost:4500/user/login`, {
+         const fetching = await fetch(`https://qr-parking-vzxn.onrender.com/user/login`, {
         method: 'POST',
         headers : {
           'Content-Type' : 'application/json',

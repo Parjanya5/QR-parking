@@ -13,7 +13,7 @@ function CarItem({ car }) {
 
   const deleteCardData = async () => {
     try {
-      const response = await fetch(`http://localhost:4500/delete/${car._id}`, {
+      const response = await fetch(`https://qr-parking-vzxn.onrender.com/delete/${car._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
