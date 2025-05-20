@@ -11,7 +11,7 @@ function Qrscan() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const finddata = `http://localhost:4500/find/${id}`;
+    const finddata = `https://qr-parking-vzxn.onrender.com/find/${id}`;
 
     const finduser = async () => {
       try {
