@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path';
 import { type } from 'os';
-import { normaldata,Getdata,postdata,updatedata,deletedata,findingdata } from '../Controllers/Carcontroller.js';
+import { normaldata,Getdata,postdata,updatedata,deletedata,findingdata } from '../Controllers/CarController.js';
 import { fetchUser } from '../Middleware/fetchUser.js';
 
 const app = express();
