@@ -4,7 +4,9 @@ import mongoose from 'mongoose'
 import QRCode from 'qrcode'
 import { type } from 'os';
 import { User } from '../models/Carmodals.js';
-
+import dotenv from 'dotenv';  
+dotenv.config();
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
 
 // Find data by id 
 export const findingdata =async (req,res)=>{
@@ -59,7 +61,7 @@ export const Getdata = async (req,res)=>{
     const {name , model , phone , vehicle , image , color, qrdataurl , message} = req.body
     try {
         const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
-        const qrText = `http://localhost:5173/Qrscan/${cardata._id}`;
+        const qrText = `${frontendUrl}/Qrscan/${cardata._id}`;
         const qrmeta = await QRCode.toDataURL(`tel:${cardata.phone}`);
 
         const qrCodeUrl = await QRCode.toDataURL(qrText);

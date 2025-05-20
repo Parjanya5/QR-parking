@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 import {Userlogin} from '../models/Usermodals.js'  
 import {body , validationResult} from 'express-validator';
 
+
 // my jwt secret
 const JWT_Secret = 'MY-PARKING'
 // mongoose.connect(`mongodb+srv://parjanyakumar8:4ZUmFtjg4kHiHeZb@scan-your-car.o8qtbmf.mongodb.net/?retryWrites=true&w=majority&appName=Scan-your-car`,{

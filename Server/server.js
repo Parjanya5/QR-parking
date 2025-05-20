@@ -10,7 +10,7 @@ import cookieParser from 'cookie-parser';
 dotenv.config();
 
 const Port = process.env.PORT ;
-console.log(Port)
+
 const app = express();
 
 // Using middleware function
