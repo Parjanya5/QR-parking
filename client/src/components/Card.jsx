@@ -12,6 +12,7 @@ function CarItem({ car }) {
   // const image1 = URL.createObjectURL(car.image)
 
   const deleteCardData = async (e) => {
+     e.preventDefault();
     try {
       const response = await fetch(`https://qr-parking-vzxn.onrender.com/delete/${car._id}`, {
         method: 'DELETE',
@@ -24,7 +25,6 @@ function CarItem({ car }) {
         console.log("Car deleted successfully");
         // window.location.reload();
         toast.success("Car deleted successfully");
-        e.preventDefault();
         setTimeout(()=>{
           window.location.reload()
         },4000)
