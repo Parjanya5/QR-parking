@@ -9,11 +9,9 @@ import "./Component.css";
 import Button from "./Button";
 import { useMediaQuery } from 'react-responsive';
 import Spinner from "./Spinner";
-const url = import.meta.env.REACT_APP_URL;
 
 function Home() {
   const [loding,setloading] = useState(false);
-    console.log(url,' i am url')
   const [carinfo, setcarinfo] = useState();
    const isWide = useMediaQuery({ minWidth: 768 }); // adjust as needed
 
@@ -63,7 +61,3 @@ function Home() {
 }
 
 export default Home;
-
-// {carinfo && carinfo.map((car, index) => (
-//    <Card key={index} car={car} />
-// ))}
