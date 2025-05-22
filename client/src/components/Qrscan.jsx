@@ -4,47 +4,47 @@ import Spinner from "./Spinner";
 // import axios from 'axios';
 
 function Qrscan() {
-//   const [loader, setloader] = useState(true);
-//   const [error, seterror] = useState(null);
-//   const navigate = useNavigate()
-//   const { id } = useParams();
-//   console.log(id);
-//   const [data, setData] = useState(null);
+  const [loader, setloader] = useState(true);
+  const [error, seterror] = useState(null);
+  const navigate = useNavigate()
+  const { id } = useParams();
+  console.log(id);
+  const [data, setData] = useState(null);
 
-//   useEffect(() => {
+  useEffect(() => {
     
-//     const finduser = async () => {
-//       setloader(true)
-//       try {
-//         const finddata = `https://qr-parking-vzxn.onrender.com/find/${id}`;
-//         const meta = await fetch(finddata);
+    const finduser = async () => {
+      setloader(true)
+      try {
+        const finddata = `https://qr-parking-vzxn.onrender.com/find/${id}`;
+        const meta = await fetch(finddata);
        
-//         if(!meta.ok){
-//             throw new Error("Data not found or fetch failed");
-//         }
+        if(!meta.ok){
+            throw new Error("Data not found or fetch failed");
+        }
 
-//         const datastore = await meta.json();
-//         setData(datastore);
-//         console.log(datastore);
-//         navigate(`/Qrscan/${id}`)
-//         setloader(false)
-//       } catch (error) {
-//         console.log(error, " i am  facing error on find data");
-//         setloader(false);
-//         seterror(error.message)
-//       }
-//       finally{
-//         setloader(false)
-//       }
-//     };
-//     finduser();
-//   }, [id]);
+        const datastore = await meta.json();
+        setData(datastore);
+        console.log(datastore);
+        navigate(`/Qrscan/${id}`)
+        setloader(false)
+      } catch (error) {
+        console.log(error, " i am  facing error on find data");
+        setloader(false);
+        seterror(error.message)
+      }
+      finally{
+        setloader(false)
+      }
+    };
+    finduser();
+  }, [id]);
 
-// if (loader) return <Spinner />;
+if (loader) return <Spinner />;
 
-//   if (error) return <p className="text-danger">❌ {error}</p>;
+  if (error) return <p className="text-danger">❌ {error}</p>;
 
-//   if (!data) return <p>No data found.</p>;
+  if (!data) return <p>No data found.</p>;
   return (
     < >
       
