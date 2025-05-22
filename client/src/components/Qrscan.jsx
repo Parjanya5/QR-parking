@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams ,useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
 // import axios from 'axios';
 
 function Qrscan() {
   const [loader, setloader] = useState("false");
-
+  const navigate = useNavigate()
   const { id } = useParams();
   console.log(id);
   const [data, setData] = useState(null);
@@ -19,6 +19,7 @@ function Qrscan() {
         const datastore = await meta.json();
         setData(datastore);
         console.log(datastore);
+        navigate(`/Qrscan/${id}`)
       } catch (error) {
         console.log(error, " i am  facing error on find data");
         setloader(true);
