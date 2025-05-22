@@ -62,7 +62,7 @@ export const Getdata = async (req,res)=>{
         const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
         const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
         // const Uro = https://qr-parking-vzxn.onrender.com/find/682b04baf26ac392d8597311
-        const qrText = `https://qr-parking-vzxn.onrender.com/find/${cardata._id}`;
+        const qrText = `https://qr-parking-wnvr.vercel.app/Qrscan/${cardata._id}`;
         const qrmeta = await QRCode.toDataURL(`tel:${cardata.phone}`);
 
         const qrCodeUrl =await QRCode.toDataURL(qrText)

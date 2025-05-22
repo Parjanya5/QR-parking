@@ -24,7 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: '*',  // Temporarily allow all origins for testing (for production, restrict this to your Vercel URL or mobile app domain)
+  origin: "https://qr-parking-wnvr.vercel.app",
+  credentials: true
 }));
 
 
