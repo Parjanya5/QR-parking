@@ -13,9 +13,9 @@ function Qrscan() {
   useEffect(() => {
     
     const finduser = async () => {
+      const finddata = `https://qr-parking-vzxn.onrender.com/find/${id}`;
       setloader(true)
       try {
-        const finddata = `https://qr-parking-vzxn.onrender.com/find/${id}`;
         const meta = await fetch(finddata);
        
         if(!meta.ok){
