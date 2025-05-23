@@ -33,6 +33,7 @@ function Login() {
         navigate('/home');
         toast.success(response.message);
         localStorage.setItem('token', response.authToken);
+        localStorage.setItem('id' , response.its);
       } else {
         toast.error( "Login failed");
       }

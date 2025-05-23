@@ -29,6 +29,6 @@ router.delete('/delete/:id',userDelete)
 router.post('/token',fetchUser,userGetToken)
 
 // Router.get
-router.get('/info/:id',userinfo)
+router.get('/info/:id',fetchUser,userinfo)
 
 export default router;

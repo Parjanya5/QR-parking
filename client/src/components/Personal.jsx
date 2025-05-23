@@ -3,17 +3,15 @@ import React,{useEffect,useState} from 'react'
 function Personal() {
    
     const [info,setinfo] = useState()
+    
+    const id = localStorage.getItem('id')
 
    useEffect(()=>{
-   const posting = `https://qr-parking-vzxn.onrender.com/user/token`
+   const posting = `https://qr-parking-vzxn.onrender.com/user/info/${id}`
    const postdata = async()=>{
     try {
         const posted = await fetch(posting,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                 'auth-token' : localStorage.getItem('token')
-            }
+            method: 'Get',
         })
         const data = await posted.json()
         console.log(data)
@@ -23,7 +21,13 @@ function Personal() {
     }   
 }
  postdata()
-   },[1])
+   },[])
+
+
+   const Personal = ({ info }) => {
+  if (!info) {
+    return <p>Loading user info...</p>;
+  }}
   //  const [name,email,phone] = info.user
   return (
     <>
@@ -34,7 +38,7 @@ function Personal() {
     </div>
     <div className="col-md-8">
       <div className="card-body">
-        <h5 className="card-title"></h5>
+        <h5 className="card-title">{info? info.name:'sorry '}</h5>
         <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
       </div>
@@ -45,4 +49,4 @@ function Personal() {
   )
 }
 
-export default Personal
+export default Personal;
