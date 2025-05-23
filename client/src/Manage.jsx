@@ -15,6 +15,7 @@ import RegisterCarpage from './page/RegisterCarpage'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QrReadpage from './page/QrReadpage'
+import Personalpage from './page/Personalpage'
 
 
 
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
             <Route path='/editcar' element={<Editpage/>} />
             <Route path='/about' element={<Aboutpage/>} />
             <Route path='/Registercar' element={<RegisterCarpage/>} />
+            <Route path='/personal' element={<Personalpage/>} />
             <Route path='/Qrscan/:id' element={<QrReadpage/>} />
             <Route path='*' element={<Notfoundpage/>} />
         </Route>

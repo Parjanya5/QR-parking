@@ -207,7 +207,7 @@ export const userGetToken =  async (req,res)=>{
         const user = await Userlogin.findById(req.user.id).select("-password")
         return res
         .status(200)
-        .json({user})
+        .json(user)
 
         
     } catch (error) {
@@ -217,3 +217,11 @@ export const userGetToken =  async (req,res)=>{
         .json({message :' internal server error token'})
     }
 }
+
+// export const userinfo = async (req,res)=>{
+//     try {
+//         const info = await Userlogin.findById(req.params.id).select("-password")
+//     } catch (error) {
+        
+//     }
+// }

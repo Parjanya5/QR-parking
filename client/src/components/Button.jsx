@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function Button() {
     return (
     <>       
-                   <Link to={'/personalcar'} className='btn btn-light'>
+                   <Link to={'/personal'} className='btn btn-light'>
                   <FaIdCard className='fs-2 py-2'/>Personal Detail
                    </Link>
                    <Link to={'/registercar'} className='btn btn-light'>

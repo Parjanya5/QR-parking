@@ -25,7 +25,10 @@ function CarItem({ car }) {
         console.log("Car deleted successfully");
         // window.location.reload();
         toast.success("Car deleted successfully");
-          // window.location.reload()
+        setTimeout(()=>{
+
+          window.location.reload()
+        },4000)
 
       } else {
         console.error("Failed to delete car");
