@@ -13,7 +13,10 @@ function Qrscan() {
   useEffect(() => {
     
     const finduser = async () => {
+      
       const finddata = `https://qr-parking-vzxn.onrender.com/find/${id}`;
+
+      
       setloader(true)
       try {
         const meta = await fetch(finddata);
@@ -24,7 +27,7 @@ function Qrscan() {
 
         const datastore = await meta.json();
         setData(datastore);
-        console.log(datastore);
+        console.log("data after fetch ",datastore);
         setloader(false)
       } catch (error) {
         console.log(error, " i am  facing error on find data");
