@@ -1,5 +1,5 @@
 import express from 'express'
-import { usernormal, userGet , userPost , userUpdate, userDelete , userfind , userGetToken} from '../Controllers/UserController.js';
+import { usernormal, userGet , userPost , userUpdate, userDelete , userfind , userGetToken , userinfo} from '../Controllers/UserController.js';
 import { fetchUser } from '../Middleware/fetchUser.js';
 
 
@@ -27,5 +27,8 @@ router.delete('/delete/:id',userDelete)
 
 // post user token
 router.post('/token',fetchUser,userGetToken)
+
+// Router.get
+router.get('/info/:id',userinfo)
 
 export default router;

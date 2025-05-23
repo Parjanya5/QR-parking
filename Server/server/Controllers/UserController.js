@@ -116,10 +116,12 @@ export const userfind = [
             }
         }
 
+        const its = finduser._id
+
         const authToken = jwt.sign(data , JWT_Secret)
         return res
         .status(200)
-        .json( {authToken : authToken , message : 'login successfully'}) 
+        .json( {authToken : authToken , message : 'login successfully', its : its}) 
     } catch (error) {
          return res
          .status(500)
@@ -218,10 +220,15 @@ export const userGetToken =  async (req,res)=>{
     }
 }
 
-// export const userinfo = async (req,res)=>{
-//     try {
-//         const info = await Userlogin.findById(req.params.id).select("-password")
-//     } catch (error) {
-        
-//     }
-// }
+export const userinfo = async (req,res)=>{
+    try {
+        const info = await Userlogin.findById(req.params.id).select("-password")
+        return res
+        .status(200)
+        .json(info)
+    } catch (error) {
+        return res
+        .status(400)
+        .json({message:'facing error with user info on user routess'})
+    }
+}
