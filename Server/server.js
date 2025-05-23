@@ -40,10 +40,16 @@ app.use(cookieParser());
 //   credentials: true
 // }));
 
+// app.use(cors({
+//   origin: "https://qr-parking-wnvr.vercel.app", // your frontend
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: "https://qr-parking-wnvr.vercel.app", // your frontend
-  credentials: true
+  origin: '*'
 }));
+; // Covers all methods and paths
+
 
 
 app.use('/',Router);
