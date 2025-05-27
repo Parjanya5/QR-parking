@@ -40,16 +40,16 @@ function Home() {
 
   return (
     <>
-      <section className="container-fluid d-flex  gap-3 mt-5 overflow-y-hidden">
-        <div className={` row ${isWide ? '' : 'gap-2'}`}>
+      <section className="container-fluid d-flex  gap-3 mt-5 overflow-y-hidden" > 
+        <div className={` row ${isWide ? '' : 'gap-3'}`}>
           <div className="col-12 col-lg-3 col-sm-6 col-md-12 col-xl-3 ">
           <div className="card d-flex flex-wrap justify-content-evenly  bg-secondary bg-opacity-25"  style={{height:'570px'}}>
-             <Button />
+             <Button carinfo={carinfo} />
             </div>
           </div>
           <div className="col-12 col-lg-9 col-sm-6col-md-12 col-xl-9 ">
             <div className="card overflow-auto custom-scroll bg-secondary bg-opacity-25" style={{height:'570px'}}> 
-            {!carinfo? <Spinner loader={loding}/> :  carinfo=="" ? <Spinner loader={loding}/> :  carinfo && carinfo.map((car, index) => (
+            {!carinfo? <Spinner loader={loding}/> :  carinfo=="" ? <Spinner loader={loding} /> :  carinfo && carinfo.map((car, index) => (
             <Card key={index} car={car} />
           ))}
             </div>

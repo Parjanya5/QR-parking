@@ -20,10 +20,10 @@ router.post('/login', userfind)
 router.post('/post',userPost)
 
 // Update User login data
-router.put('/put/:id',userUpdate)
+router.put('/put/:id',fetchUser,userUpdate)
 
 // Delete user login data
-router.delete('/delete/:id',userDelete)
+router.delete('/delete/:id',fetchUser,userDelete)
 
 // post user token
 router.post('/token',fetchUser,userGetToken)

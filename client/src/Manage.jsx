@@ -16,23 +16,30 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QrReadpage from './page/QrReadpage'
 import Personalpage from './page/Personalpage'
-
+import UpdateUserPage from './page/UpdateUserPage'
+import Authlayout from './Layout/Authlayout'
 
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<Mainlayout/>}>
-            <Route index element={<SigninPage/>}/>
-            <Route path='/signup' element={<SignupPage/>}/>
+        <>
+        <Route  element={<Mainlayout/>}>
             <Route path='/Home' element={<Homepage/>} />
             <Route path='/editcar' element={<Editpage/>} />
             <Route path='/about' element={<Aboutpage/>} />
             <Route path='/Registercar' element={<RegisterCarpage/>} />
             <Route path='/personal' element={<Personalpage/>} />
             <Route path='/Qrscan/:id' element={<QrReadpage/>} />
+            <Route path='/UpdateUser' element={<UpdateUserPage/>} />
             <Route path='*' element={<Notfoundpage/>} />
         </Route>
 
+         {/* Auth layout for signin/signup only */}
+      <Route element={<Authlayout />}>
+        <Route index element={<SigninPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Route>
+</>
     )
 )
 

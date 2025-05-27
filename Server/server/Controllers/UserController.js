@@ -170,8 +170,11 @@ export const userPost  = async (req,res)=>{
 
 export const userUpdate = async (req,res)=>{
     console.log(req.body)
-    try {
-        const updateruser = await Userlogin.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    try { 
+          const {name,email,phone} = req.body
+          const salt =await bcrypt.genSalt(10);
+          const secpassword = await bcrypt.hash(req.body.password,salt)
+        const updateruser = await Userlogin.findByIdAndUpdate(req.params.id,{name,email,phone,password:secpassword},{new:true})
         if(updateruser){
             return res 
             .status(200)

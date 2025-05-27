@@ -71,12 +71,13 @@ export const Getdata = async (req,res)=>{
         cardata.model = req.body.model;
         cardata.qrdataurl = qrCodeUrl;
         cardata.qrdata = qrmeta;
-        cardata.image = `https://clipart-library.com/img1/1060318.png`
+        // cardata.image = `https://clipart-library.com/img1/1060318.png`
+        
        await cardata.save();
        console.log("data set succesfully")
         return res
         .status(200)
-        .json({message:'succesfully post data on car routes'})
+        .json({message:'Car Created succesfully'})
     } catch (error) {
         console.log(error,'Facing error with Post data on car route')
         return res
