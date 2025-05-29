@@ -3,6 +3,7 @@ import path from 'path';
 import { type } from 'os';
 import { normaldata,Getdata,postdata,updatedata,deletedata,findingdata } from '../Controllers/CarController.js';
 import { fetchUser } from '../Middleware/fetchUser.js';
+import { upload } from '../Middleware/Image.js';
 
 const app = express();
 const Router = express.Router()
@@ -24,7 +25,7 @@ Router.get('/Get',fetchUser, Getdata)
 
 
 //  post request routes 
-Router.post('/post',fetchUser,postdata)
+Router.post('/post',fetchUser,upload.single('image') ,postdata)
 
 
 // Update Request

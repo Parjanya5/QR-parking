@@ -53,7 +53,7 @@ function Registercar() {
             <span className="text-danger fw-bolder">Register</span>  your car
           </p>
           <form className="text-dark" onSubmit={registerdata}>
-            <div className="d-flex gap-5 flex-wrap">
+            <div className="d-flex gap-3 flex-wrap">
               <div className="d-flex text-start flex-column gap-2">
                 <label htmlFor="" className="">
                   Your Name
@@ -65,7 +65,7 @@ function Registercar() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter Your Name"
-                  className="p-2 rounded bg-secondary bg-opacity-25"
+                  className="p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
               <div className="d-flex text-start flex-column gap-2">
@@ -76,14 +76,14 @@ function Registercar() {
                   type="text"
                   name="vehicle"
                   id=""
-                  placeholder="Enter Your Name"
+                  placeholder="Enter Your Number"
                   value={vehicle}
                   onChange={(e) => setvehicle(e.target.value)}
-                  className="text-uppercase p-2 rounded bg-secondary bg-opacity-25"
+                  className="text-uppercase p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
             </div>
-            <div className="d-flex gap-5 mt-3 flex-wrap">
+            <div className="d-flex gap-3 mt-3 flex-wrap">
               <div className="d-flex text-start flex-column gap-2">
                 <label htmlFor="" className="">
                   Vehicle Model
@@ -92,10 +92,10 @@ function Registercar() {
                   type="text"
                   name="model"
                   id=""
-                  placeholder="Enter Your Name"
+                  placeholder="Enter Your Model"
                   value={model}
                   onChange={(e) => setmodel(e.target.value)}
-                  className="p-2 rounded bg-secondary bg-opacity-25"
+                  className="p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
               <div className="d-flex text-start flex-column gap-2">
@@ -103,17 +103,17 @@ function Registercar() {
                   Vehicle color
                 </label>
                 <input
-                  type="tel"
+                  type="text"
                   name="color"
                   id=""
-                  placeholder="Enter Your Name"
+                  placeholder="Enter Your Color"
                   value={color}
                   onChange={(e) => setcolor(e.target.value)}
-                  className="p-2 rounded bg-secondary bg-opacity-25"
+                  className="p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
             </div>
-            <div className="d-flex text-start mt-3 flex-column gap-2">
+            <div className="d-flex text-start mt-3 flex-column  gap-2">
               <label htmlFor="" className="">
                 Contact
               </label>
@@ -121,10 +121,10 @@ function Registercar() {
                 type="tel"
                 name="phone"
                 id=""
-                placeholder="Enter Your Name"
+                placeholder="Enter Your Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="p-2 rounded bg-secondary bg-opacity-25"
+                className="p-2 rounded bg-secondary bg-opacity-25 w-100"
               />
             </div>
             <div className="d-flex text-start mt-3 flex-column gap-2">
@@ -135,10 +135,11 @@ function Registercar() {
                 type="file"
                 name="image"
                 id=""
+                files={image}
                 accept="image/*"
                 placeholder="choose image"
                 onChange={(e) => setimage(e.target.value)}
-                className="p-2 rounded bg-secondary bg-opacity-25"
+                className="p-2 rounded bg-secondary bg-opacity-25 w-100"
               />
             </div>
             <div className="d-flex text-start mt-3 flex-column gap-2">
@@ -146,7 +147,7 @@ function Registercar() {
                 Your Message
               </label>
               <textarea
-                className="p-2 rounded bg-secondary bg-opacity-25"
+                className="p-2 rounded bg-secondary w-75 bg-opacity-25 w-100"
                 name="message"
                 id=""
                 value={message}
@@ -154,11 +155,11 @@ function Registercar() {
                 placeholder="Please Enter Your Message for Scanner user person"
               ></textarea>
             </div>
-            <div className="d-flex justify-content-evenly mt-4 ">
-              <button type="submit" className="btn btn-primary w-50">
+            <div className="d-flex justify-content-start mt-4 gap-3 ">
+              <button type="submit" className="btn btn-grad1 w-50">
                 Submit
               </button>
-              <button type="reset" className="btn btn-danger">
+              <button type="reset" className="btn btn-grad2 w-50">
                 Reset
               </button>
             </div>

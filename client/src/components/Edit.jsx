@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdUpdate } from "react-icons/md";
 import { toast } from "react-toastify";
@@ -13,31 +13,32 @@ function Edit() {
   //  States
   const [newname, setName] = useState(car.name ? car.name : " ");
   const [newmodel, setmodel] = useState(car?.model || "");
-  const [newimage, setimage] = useState(car?.image || "");
+  // const [newimage, setimage] = useState(car?.image || "");
   const [preview, setpreview] = useState(null);
   const [newphone, setphone] = useState(car?.phone || "");
   const [newcolor, setcolor] = useState(car?.color || "");
   const [newmessage, setmessage] = useState(car?.message || "");
 
-  const handlefilechange = (e) => {
-    const selected = e.target.files[0];
-    if (selected) {
-      setimage(selected);
-      const objecturl = URL.createObjectURL(selected);
-      setpreview(objecturl);
-      localStorage.setItem("image", objecturl);
-    }
-  };
+  // const handlefilechange = (e) => {
+  //   const selected = e.target.files[0];
+  //   // if (selected) {
+  //   //   setimage(selected);
+  //   //   const objecturl = URL.createObjectURL(selected);
+  //   //   setpreview(objecturl);
+  //   //   localStorage.setItem("image", objecturl);
+  //   // }
 
-  useEffect(() => {
-    const savedpreview = localStorage.getItem("image");
-    //  if(savedpreview && !preview){
-    setpreview(savedpreview);
-    //  }
-    console.log(preview);
-    console.log(savedpreview);
-  }, []);
-  // console.log(user,'data')
+  // };
+
+  // useEffect(() => {
+  //   const savedpreview = localStorage.getItem("image");
+  //   //  if(savedpreview && !preview){
+  //   setpreview(savedpreview);
+  //   //  }
+  //   console.log(preview);
+  //   console.log(savedpreview);
+  // }, []);
+  // // console.log(user,'data')
 
   const datameta = {
     name: newname,
@@ -121,9 +122,9 @@ function Edit() {
                 className="p-2 bg-light fw-bold border-bottom bg-secondary bg-opacity-25 rounded"
                 accept="image/*"
                 name="name"
-                files={newimage}
+                files={preview}
                 id="name"
-                onChange={handlefilechange}
+                onChange={(e)=> setpreview(e.target.value)}
                 placeholder="Enter your Car image"
               />
             </div>

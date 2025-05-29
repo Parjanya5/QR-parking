@@ -13,7 +13,7 @@ import Spinner from "./Spinner";
 function Home() {
   const [loding,setloading] = useState(false);
   const [carinfo, setcarinfo] = useState();
-   const isWide = useMediaQuery({ minWidth: 768 }); // adjust as needed
+   const isWide = useMediaQuery({ minWidth: 830 }); // adjust as needed
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -47,7 +47,7 @@ function Home() {
              <Button carinfo={carinfo} />
             </div>
           </div>
-          <div className="col-12 col-lg-9 col-sm-6col-md-12 col-xl-9 ">
+          <div className="col-12 col-lg-9 col-sm-6 col-md-12 col-xl-9 ">
             <div className="card overflow-auto custom-scroll bg-secondary bg-opacity-25" style={{height:'570px'}}> 
             {!carinfo? <Spinner loader={loding}/> :  carinfo=="" ? <Spinner loader={loding} /> :  carinfo && carinfo.map((car, index) => (
             <Card key={index} car={car} />

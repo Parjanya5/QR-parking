@@ -5,6 +5,7 @@ import QRCode from 'qrcode'
 import { type } from 'os';
 import { User } from '../models/Carmodals.js';
 import dotenv from 'dotenv';  
+import { upload } from '../Middleware/Image.js';
 dotenv.config();
 
 // Find data by id 

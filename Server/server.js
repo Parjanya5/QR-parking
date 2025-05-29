@@ -23,28 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
-// const allowedOrigins = [
-//   "*",
-//   "https://qr-parking-wnvr.vercel.app"
-// ];
-
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("❌ Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true
-// }));
-
-// app.use(cors({
-//   origin: "https://qr-parking-wnvr.vercel.app", // your frontend
-//   credentials: true
-// }));
-
 app.use(cors({
   origin: '*'
 }));
