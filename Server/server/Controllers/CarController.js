@@ -60,7 +60,7 @@ export const Getdata = async (req,res)=>{
     }
 
     const {name , model , phone , vehicle , color, qrdataurl , message} = req.body
-    const impagepathurl = req.file.path
+  const impagepathurl = req.file ? req.file.path : null;
      if (!req.file) {
        console.log('Image not found');
     }
@@ -71,8 +71,6 @@ export const Getdata = async (req,res)=>{
     try {
         const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
         const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
-        // const Uro = https://qr-parking-vzxn.onrender.com/find/682b04baf26ac392d8597311
-        // const qrText = `https://qr-parking-wnvr-git-main-parjanya5s-projects.vercel.app/Qrscan/${}`;
         const qrText = `http://localhost:5173/Qrscan/${cardata._id}`
         const qrmeta = await QRCode.toDataURL(`tel:${cardata.phone}`);
 
