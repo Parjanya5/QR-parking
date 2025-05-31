@@ -61,9 +61,6 @@ export const Getdata = async (req,res)=>{
 
     const {name , model , phone , vehicle , color, qrdataurl , message} = req.body
   const impagepathurl = req.file ? req.file.path : null;
-    //  if (!req.file) {
-    //    console.log('Image not found');
-    // }
     const image = impagepathurl;
      
     console.log(image , 'image path')
