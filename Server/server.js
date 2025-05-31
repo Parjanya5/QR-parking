@@ -23,14 +23,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// app.use(cors({
-//   origin: '*'
-// }));
- app.use(cors({
-  origin: 'http://localhost:5173',  // Allow your frontend origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true // If using cookies or authorization headers
+app.use(cors({
+  origin: '*',  // Allows frontend from localhost:5173, Vercel, Netlify etc.
 }));
+//  app.use(cors({
+//   origin: 'http://localhost:5173',  // Allow your frontend origin
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   credentials: true // If using cookies or authorization headers
+// }));
 
 ; // Covers all methods and paths
 

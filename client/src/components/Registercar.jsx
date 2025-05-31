@@ -4,60 +4,36 @@ import "./Component.css";
 import { toast } from "react-toastify";
 
 function Registercar() {
-//   const [name, setName] = useState("");
-//   const [phone, setPhone] = useState("");
-//   const [vehicle, setvehicle] = useState("");
-//   const [model, setmodel] = useState("");
-//   const [color, setcolor] = useState("");
-//   const [message, setmessage] = useState("");
-//   const [image, setimage] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [vehicle, setvehicle] = useState("");
+  const [model, setmodel] = useState("");
+  const [color, setcolor] = useState("");
+  const [message, setmessage] = useState("");
+  const [image, setimage] = useState("");
   const navigate = useNavigate();
 
-// const formdate = new FormData();
-// formdate.append("name", name);
-// formdate.append("phone", phone);
-// formdate.append("vehicle", vehicle);
-// formdate.append("model", model);
-// formdate.append("color",color)
-// formdate.append("image", image);
-// formdate.append("message",message)
-
- const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    vehicle: "",
-    model: "",
-    color: "",
-    message: "",
-    image: null
-  });
-
-    const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: files ? files[0] : value
-    }));
-  };
+const formdate = new FormData();
+formdate.append("name", name);
+formdate.append("phone", phone);
+formdate.append("vehicle", vehicle);
+formdate.append("model", model);
+formdate.append("color",color)
+formdate.append("image", image);
+formdate.append("message",message)
  
   const registerdata = async (e) => {
     e.preventDefault();
-
-        const formDataToSend = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (value) formDataToSend.append(key, value);
-    });
-
 
     const apiurl = `https://qr-parking-vzxn.onrender.com/post`;
     try {
       const posting = await fetch(apiurl, {
         method: "POST",
         headers: {
-          'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
+          'Content-Type': 'application/json',
           "auth-token": localStorage.getItem("token"),
         },
-        body: formDataToSend,
+        body: formdate,
       });
       const data = await posting.json();
       if (posting.ok) {
@@ -88,8 +64,8 @@ function Registercar() {
                   type="text"
                   name="name"
                   id=""
-                  value={formData.name}
-                  onChange={handleChange}
+                  value={name}
+                  onChange={(e)=>setName(e.target.value)}
                   placeholder="Enter Your Name"
                   className="p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
@@ -103,8 +79,8 @@ function Registercar() {
                   name="vehicle"
                   id=""
                   placeholder="Enter Your Number"
-                  value={formData.vehicle}
-                  onChange={handleChange}
+                  value={vehicle}
+                  onChange={(e)=>setvehicle(e.target.value)}
                   className="text-uppercase p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
@@ -119,8 +95,8 @@ function Registercar() {
                   name="model"
                   id=""
                   placeholder="Enter Your Model"
-                  value={formData.model}
-                  onChange={handleChange}
+                  value={model}
+                  onChange={(e)=> setmodel(e.target.value)}
                   className="p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
@@ -133,8 +109,8 @@ function Registercar() {
                   name="color"
                   id=""
                   placeholder="Enter Your Color"
-                  value={formData.color}
-                  onChange={handleChange}
+                  value={color}
+                  onChange={(e)=> setcolor(e.target.color)}
                   className="p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
@@ -148,8 +124,8 @@ function Registercar() {
                 name="phone"
                 id=""
                 placeholder="Enter Your Phone"
-                value={formData.phone}
-                onChange={handleChange}
+                value={phone}
+                onChange={(e)=> setPhone(e.target.phone)}
                 className="p-2 rounded bg-secondary bg-opacity-25 w-100"
               />
             </div>
@@ -163,7 +139,7 @@ function Registercar() {
                 id="" 
                 accept="image/*"
                 placeholder="choose image"
-                onChange={handleChange}
+                onChange={(e)=> setimage(e.target.files[0])}
                 className="p-2 rounded bg-secondary bg-opacity-25 w-100"
               />
             </div>
@@ -175,8 +151,8 @@ function Registercar() {
                 className="p-2 rounded bg-secondary w-75 bg-opacity-25 w-100"
                 name="message"
                 id=""
-                value={formData.message}
-                onChange={handleChange}
+                value={message}
+                onChange={(e)=> setmessage(e.target.value)}
                 placeholder="Please Enter Your Message for Scanner user person"
               ></textarea>
             </div>
