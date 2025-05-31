@@ -52,13 +52,22 @@ export const Getdata = async (req,res)=>{
 
  export const postdata = async (req,res)=>{
     console.log(req.body)
+    console.log(req.file)
     if(!req.body.name ){
        return res
        .status(400)
        .json({message:'req.body not passes data to post request'})
     }
 
-    const {name , model , phone , vehicle , image , color, qrdataurl , message} = req.body
+    const {name , model , phone , vehicle , color, qrdataurl , message} = req.body
+    const impagepathurl = req.file.path
+     if (!req.file) {
+       console.log('Image not found');
+    }
+  
+    const image = impagepathurl;
+     
+    console.log(image , 'image path')
     try {
         const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
         const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
@@ -75,7 +84,7 @@ export const Getdata = async (req,res)=>{
         // cardata.image = `https://clipart-library.com/img1/1060318.png`
         
        await cardata.save();
-       console.log("data set succesfully")
+       console.log("data set succesfully" , cardata)
         return res
         .status(200)
         .json({message:'Car Created succesfully'})
