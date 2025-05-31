@@ -30,7 +30,6 @@ formdate.append("message",message)
       const posting = await fetch(apiurl, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
           "auth-token": localStorage.getItem("token"),
         },
         body: formdate,
