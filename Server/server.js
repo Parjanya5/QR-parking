@@ -16,8 +16,7 @@ const app = express();
 // Using middleware function
 app.use(logger)
 
-// app.use('/uploads', express.static(path.join(__dirname, 'Upload')));
-app.use(express.static('/server'))
+app.use('/uploads', express.static(path.join(__dirname, 'Upload')));
 app.use(express.json());
 
 
