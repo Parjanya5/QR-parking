@@ -19,7 +19,7 @@ app.use(logger)
 app.use(express.static('/server'))
 
 
-app.use(express.json());
+// app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
