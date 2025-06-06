@@ -6,12 +6,16 @@ import dotenv from 'dotenv';
 import logger from './server/Middleware/logger.js';
 import cors from "cors";
 import cookieParser from 'cookie-parser';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const Port = process.env.PORT ;
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Using middleware function
 app.use(logger)

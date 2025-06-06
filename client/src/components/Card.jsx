@@ -66,7 +66,7 @@ function CarItem({ car }) {
     <div class="col-md-8 ">
       <div class="card-body  bg-light">
         <div>
-        {/* <img src={`${URL.createObjectURL(car.image)}`} alt="QR Code" className="img-fluid rounded mb-2" width={'150px'}/> */}
+        <img src={car.image} alt="QR Code" className="img-fluid rounded mb-2" width={'150px'}/>
         </div>
         <h5 class="card-title fw-bold ">{car.name}</h5>
         <p class="card-text" ><small class="text-body-secondary fw-bolder">Vehicle no : {car.vehicle}</small></p>
@@ -75,8 +75,8 @@ function CarItem({ car }) {
         <p class="card-text"><small class="text-body-secondary fw-bolder">Model : {car.model}</small></p>
         <p class="card-text">{!car.message=="" ?`Message : ${car.message}` : `Hello User ! This is My car  ${car.model}  on ${car.color} color , So  i approve your request please contact to me on my given number `}</p>
       <div className="d-flex gap-3 justify-content-evenly pb-1">
-           <button className='btn btn-grad3 text-white px-2' onClick={handleedit}>Edit</button>
-           <button className='btn btn-grad2 px-2' onClick={deleteCardData}>Delete</button>
+           <button className='btn btn-warning text-white px-2' onClick={handleedit}>Edit</button>
+           <button className='btn btn-danger px-2' onClick={deleteCardData}>Delete</button>
        </div>
       </div>
     </div>

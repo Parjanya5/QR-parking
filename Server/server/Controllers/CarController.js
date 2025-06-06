@@ -145,3 +145,23 @@ export const deletedata =  async (req,res)=>{
 export const sendAlert = async(req,res)=>{
 
 }
+
+export const getimage = async(req,res)=>{
+    const {id}= req.params
+    try {
+        const imagedata = await ImageModel.findById(id)
+
+        if(!imagedata){
+            return res
+            .status(200)
+            .message('image not found')
+        }
+
+        const imagepath = path.join(__dirname,"uploads", imagedata.filename)
+        res.sendFile(imagepath)
+    } catch (error) {
+        return res
+        .status(500)
+        .json({messsage:'unable to get image', error})
+    }
+}
