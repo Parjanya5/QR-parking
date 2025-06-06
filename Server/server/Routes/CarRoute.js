@@ -30,7 +30,7 @@ Router.post('/post',fetchUser,upload.single('image') ,postdata)
 
 // Update Request
 
-Router.put('/put/:id',fetchUser,updatedata)
+Router.put('/put/:id',fetchUser,upload.single('image'),updatedata)
 
 // Delete user
 Router.delete('/delete/:id',fetchUser,deletedata)
