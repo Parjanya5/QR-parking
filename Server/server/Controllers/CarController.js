@@ -98,8 +98,11 @@ export const updatedata = async(req,res)=>{
     console.log('data for updating', req.params.id , 'now body' , req.body)
     const {name,model,phone,color,message}= req.body
    const filename = req.file ? req.file.filename : null; // ✅ just save the filename as a string
-     const image = filename;
     
+       const updateFields = { name, model, phone, color, message };
+     if (filename) {
+    updateFields.image = filename; // Only update image if new file uploaded
+     }
 
       try {
         if(!req.params.id){
@@ -108,7 +111,7 @@ export const updatedata = async(req,res)=>{
             .json({message:'dont get the id of updation data in car routes'})
         }
 
-        const updatedata = await User.findByIdAndUpdate(req.params.id,{name,model,phone,color,message,image},{new:true})
+        const updatedata = await User.findByIdAndUpdate(req.params.id,updateFields,{new:true})
         if(updatedata){
             return res
             .status(200)
