@@ -68,7 +68,7 @@ export const Getdata = async (req,res)=>{
      const image = filename;
     console.log(image , 'image path')
     try {
-        const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
+        const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl, message , user : req.user.id })
         const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
         const qrText = `http://localhost:5173/Qrscan/${cardata._id}`
         const qrmeta = await QRCode.toDataURL(`tel:${cardata.phone}`);
@@ -96,8 +96,9 @@ export const Getdata = async (req,res)=>{
 // update data
 export const updatedata = async(req,res)=>{
     console.log('data for updating', req.params.id , 'now body' , req.body)
-    const {name,model,phone,color,message,image}= req.body
-   
+    const {name,model,phone,color,message}= req.body
+   const filename = req.file ? req.file.filename : null; // ✅ just save the filename as a string
+     const image = filename;
     
 
       try {
@@ -107,7 +108,7 @@ export const updatedata = async(req,res)=>{
             .json({message:'dont get the id of updation data in car routes'})
         }
 
-        const updatedata = await User.findByIdAndUpdate(req.params.id,req.body,{new:true})
+        const updatedata = await User.findByIdAndUpdate(req.params.id,{name,model,phone,color,message,image},{new:true})
         if(updatedata){
             return res
             .status(200)

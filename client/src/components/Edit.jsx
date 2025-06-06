@@ -14,7 +14,7 @@ function Edit() {
   const [newname, setName] = useState(car.name ? car.name : " ");
   const [newmodel, setmodel] = useState(car?.model || "");
   // const [newimage, setimage] = useState(car?.image || "");
-  const [preview, setpreview] = useState(null);
+  const [preview, setpreview] = useState("");
   const [newphone, setphone] = useState(car?.phone || "");
   const [newcolor, setcolor] = useState(car?.color || "");
   const [newmessage, setmessage] = useState(car?.message || "");
@@ -122,9 +122,8 @@ function Edit() {
                 className="p-2 bg-light fw-bold border-bottom bg-secondary bg-opacity-25 rounded"
                 accept="image/*"
                 name="name"
-                files={preview}
                 id="name"
-                onChange={(e)=> setpreview(e.target.value)}
+                onChange={(e)=> setpreview(e.target.files[0])}
                 placeholder="Enter your Car image"
               />
             </div>

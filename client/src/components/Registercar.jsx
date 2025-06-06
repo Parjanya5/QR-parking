@@ -109,7 +109,7 @@ formdate.append("message",message)
                   id=""
                   placeholder="Enter Your Color"
                   value={color}
-                  onChange={(e)=> setcolor(e.target.color)}
+                  onChange={(e)=> setcolor(e.target.value)}
                   className="p-2 rounded bg-secondary bg-opacity-25 w-100"
                 />
               </div>
@@ -124,7 +124,7 @@ formdate.append("message",message)
                 id=""
                 placeholder="Enter Your Phone"
                 value={phone}
-                onChange={(e)=> setPhone(e.target.phone)}
+                onChange={(e)=> setPhone(e.target.value)}
                 className="p-2 rounded bg-secondary bg-opacity-25 w-100"
               />
             </div>

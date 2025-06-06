@@ -66,7 +66,7 @@ function CarItem({ car }) {
     <div class="col-md-8 ">
       <div class="card-body  bg-light">
         <div>
-        <img src={car.image} alt="QR Code" className="img-fluid rounded mb-2" width={'150px'}/>
+        <img src={car.image ? `https://qr-parking-vzxn.onrender.com/uploads/${car.image}` : `http://www.fotolip.com/wp-content/uploads/2016/05/Car-Clipart-1.png`} alt="QR Code" className="img-fluid rounded mb-2" width={'150px'}/>
         </div>
         <h5 class="card-title fw-bold ">{car.name}</h5>
         <p class="card-text" ><small class="text-body-secondary fw-bolder">Vehicle no : {car.vehicle}</small></p>
