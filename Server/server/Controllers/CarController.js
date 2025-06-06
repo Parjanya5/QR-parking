@@ -60,10 +60,12 @@ export const Getdata = async (req,res)=>{
     }
 
     const {name , model , phone , vehicle , color, qrdataurl , message} = req.body
-    const {path , filename} = req.file
+    // const {path , filename} = req.file
 //   const impagepathurl = req.file ? req.file.path : null;
     // const image = impagepathurl;
-    const image = await User({path , filename})
+    // const image = await User({path , filename})
+    const filename = req.file ? req.file.filename : null; // ✅ just save the filename as a string
+     const image = filename;
     console.log(image , 'image path')
     try {
         const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
