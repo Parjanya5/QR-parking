@@ -63,7 +63,7 @@ export const Getdata = async (req,res)=>{
     const {path , filename} = req.file
 //   const impagepathurl = req.file ? req.file.path : null;
     // const image = impagepathurl;
-    const image = await cardata({path , filename})
+    const image = await User({path , filename})
     console.log(image , 'image path')
     try {
         const cardata = new User({name,model,phone,vehicle,image,color,qrdataurl,message , user : req.user.id })
@@ -150,7 +150,7 @@ export const sendAlert = async(req,res)=>{
 export const getimage = async(req,res)=>{
     const {id}= req.params
     try {
-        const imagedata = await cardata.findById(id)
+        const imagedata = await User.findById(id)
 
         if(!imagedata){
             return res
