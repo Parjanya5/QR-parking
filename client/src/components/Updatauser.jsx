@@ -16,7 +16,7 @@ function Updatauser() {
   const navigate = useNavigate();
   const info = state?.info;
 
-  const [name, setUser] = useState(info.name);
+  const [name, setname] = useState(info.name);
   const [email, setemail] = useState(info.email);
   const [phone, setphone] = useState(info.phone);
   // const [password, setpassword] = useState("");
@@ -70,7 +70,7 @@ function Updatauser() {
                   <input
                     type="email"
                     value={name}
-                    onChange={(e) => setUser(e.target.value)}
+                    onChange={(e) => setname(e.target.value)}
                     className="rounded bg-light text-dark px-2"
                     name=""
                     id=""

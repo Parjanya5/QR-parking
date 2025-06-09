@@ -182,9 +182,10 @@ export const userUpdate = async (req,res)=>{
         if(updateruser){
             return res 
             .status(200)
-            .json({message:'data updated Succesfully'})
+            .json({message:'Data updated Succesfully'})
         }
     } catch (error) {
+        console.log(error)
         return res
         .status(400)
         .json({message:'facing error with update user',error : error.message})
