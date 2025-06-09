@@ -99,7 +99,7 @@ export const updatedata = async(req,res)=>{
     const {name,model,phone,color,message}= req.body
    const filename = req.file ? req.file.filename : null; // ✅ just save the filename as a string
     
-       const updateFields = { name, model, phone, color, message };
+       const updateFields = { name, model, phone, color,image, message };
      if (filename) {
     updateFields.image = filename; // Only update image if new file uploaded
      }

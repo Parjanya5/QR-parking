@@ -19,26 +19,7 @@ function Edit() {
   const [newcolor, setcolor] = useState(car?.color || "");
   const [newmessage, setmessage] = useState(car?.message || "");
 
-  // const handlefilechange = (e) => {
-  //   const selected = e.target.files[0];
-  //   // if (selected) {
-  //   //   setimage(selected);
-  //   //   const objecturl = URL.createObjectURL(selected);
-  //   //   setpreview(objecturl);
-  //   //   localStorage.setItem("image", objecturl);
-  //   // }
-
-  // };
-
-  // useEffect(() => {
-  //   const savedpreview = localStorage.getItem("image");
-  //   //  if(savedpreview && !preview){
-  //   setpreview(savedpreview);
-  //   //  }
-  //   console.log(preview);
-  //   console.log(savedpreview);
-  // }, []);
-  // // console.log(user,'data')
+ 
 
   const datameta = {
     name: newname,
@@ -48,10 +29,6 @@ function Edit() {
     color: newcolor,
     message: newmessage,
   };
-
-  //  const updatelist = {
-
-  //  }
 
   const updatedata = async () => {
     const url = `https://qr-parking-vzxn.onrender.com/put/${car._id}`;
