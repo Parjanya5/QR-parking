@@ -172,9 +172,9 @@ export const userUpdate = async (req,res)=>{
     console.log(req.body)
     try { 
           const {name,email,phone} = req.body
-          const salt =await bcrypt.genSalt(10);
-          const secpassword = await bcrypt.hash(req.body.password,salt)
-        const updateruser = await Userlogin.findByIdAndUpdate(req.params.id,{name,email,phone,password:secpassword},{new:true})
+        //   const salt =await bcrypt.genSalt(10);
+        //   const secpassword = await bcrypt.hash(req.body.password,salt)
+        const updateruser = await Userlogin.findByIdAndUpdate(req.params.id,{name,email,phone},{new:true})
         if(updateruser){
             return res 
             .status(200)
@@ -183,7 +183,7 @@ export const userUpdate = async (req,res)=>{
     } catch (error) {
         return res
         .status(400)
-        .json({message:'facing error with update user'})
+        .json({message:'facing error with update user',error})
     }
 }
 

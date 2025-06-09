@@ -33,7 +33,6 @@ function Updatauser() {
       const updation = await fetch(urlis, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({ name, email, phone }),
@@ -45,7 +44,7 @@ function Updatauser() {
         navigate("/personal");
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, error);
     }
   };
   return (
