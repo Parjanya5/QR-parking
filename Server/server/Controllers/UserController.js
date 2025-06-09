@@ -172,6 +172,10 @@ export const userUpdate = async (req,res)=>{
     console.log(req.body)
     try { 
           const {name,email,phone} = req.body
+
+           if (!name || !email || !phone) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
         //   const salt =await bcrypt.genSalt(10);
         //   const secpassword = await bcrypt.hash(req.body.password,salt)
         const updateruser = await Userlogin.findByIdAndUpdate(req.params.id,{name,email,phone},{new:true})
@@ -183,7 +187,7 @@ export const userUpdate = async (req,res)=>{
     } catch (error) {
         return res
         .status(400)
-        .json({message:'facing error with update user',error})
+        .json({message:'facing error with update user',error : error.message})
     }
 }
 

@@ -22,6 +22,7 @@ function Updatauser() {
   // const [password, setpassword] = useState("");
   // const [pass1, setpass1] = useState("");
 
+
   const updateuser = async () => {
     const id = localStorage.getItem("id");
     const urlis = `https://qr-parking-vzxn.onrender.com/user/put/${id}`;
