@@ -14,21 +14,20 @@ function Edit() {
   const [newname, setName] = useState(car.name ? car.name : " ");
   const [newmodel, setmodel] = useState(car?.model || "");
   // const [newimage, setimage] = useState(car?.image || "");
-  const [preview, setpreview] = useState("");
+  const [newimage, setimage] = useState("");
   const [newphone, setphone] = useState(car?.phone || "");
   const [newcolor, setcolor] = useState(car?.color || "");
   const [newmessage, setmessage] = useState(car?.message || "");
 
  
 
-  const datameta = {
-    name: newname,
-    model: newmodel,
-    image: preview, // user
-    phone: newphone,
-    color: newcolor,
-    message: newmessage,
-  };
+const editdata = new FormData();
+editdata.append("name", newname);
+editdata.append("model", newmodel);
+editdata.append("phone", newphone);
+editdata.append("color", newcolor);
+editdata.append("message", newmessage);
+editdata.append("image", newimage);
 
   const updatedata = async () => {
     const url = `https://qr-parking-vzxn.onrender.com/put/${car._id}`;
@@ -36,10 +35,9 @@ function Edit() {
       const process = await fetch(url, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
         },
-        body: JSON.stringify(datameta),
+        body: editdata,
       });
       const data = await process.json();
       console.log(data.message, "data update succesfully");
@@ -100,7 +98,7 @@ function Edit() {
                 accept="image/*"
                 name="name"
                 id="name"
-                onChange={(e)=> setpreview(e.target.files[0])}
+                onChange={(e)=> setimage(e.target.files[0])}
                 placeholder="Enter your Car image"
               />
             </div>
