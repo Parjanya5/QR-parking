@@ -19,14 +19,15 @@ const __dirname = path.dirname(__filename);
 
 // Using middleware function
 app.use(logger)
-
-app.use('/uploads', express.static(path.join(__dirname, 'Upload')));
 app.use(express.json());
-
-
 // app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'Upload')));
+
+
 
 app.use(cors({
   origin: '*',  // Allows frontend from localhost:5173, Vercel, Netlify etc.
