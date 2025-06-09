@@ -29,6 +29,7 @@ editdata.append("color", newcolor);
 editdata.append("message", newmessage);
 editdata.append("image", newimage);
 
+
   const updatedata = async () => {
     const url = `https://qr-parking-vzxn.onrender.com/put/${car._id}`;
     try {
