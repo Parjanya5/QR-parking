@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./Component.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import GoogleAuth from "./GoogleAuth";
 
 function Login() {
   const navigate = useNavigate();
@@ -96,10 +97,9 @@ function Login() {
                 </Link>
               </div>
             </form>
-            <p className="fs-5 fw-bold mt-3">OR</p>
-            <div className="bg-light py-1 d-flex justify-content-center align-items-center gap-2  ">
-              <b>{<MdLock className="text-primary fs-5" />}</b>
-              <b>Sign-in with Google</b>
+            <p className=" fw-semibold mt-3">-OR-</p>
+            <div>
+              <GoogleAuth/>
             </div>
           </div>
           <div className="hide-on-desktop">

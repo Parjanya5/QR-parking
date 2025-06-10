@@ -34,6 +34,7 @@ function Updatauser() {
       const updation = await fetch(urlis, {
         method: "PUT",
         headers: {
+          "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({ name, email, phone }),

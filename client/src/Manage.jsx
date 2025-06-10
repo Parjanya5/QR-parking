@@ -18,6 +18,8 @@ import QrReadpage from './page/QrReadpage'
 import Personalpage from './page/Personalpage'
 import UpdateUserPage from './page/UpdateUserPage'
 import Authlayout from './Layout/Authlayout'
+import GoogleAuth from './components/GoogleAuth'
+
 
 
 const router = createBrowserRouter(
@@ -31,13 +33,14 @@ const router = createBrowserRouter(
             <Route path='/personal' element={<Personalpage/>} />
             <Route path='/Qrscan/:id' element={<QrReadpage/>} />
             <Route path='/UpdateUser' element={<UpdateUserPage/>} />
-            <Route path='*' element={<Notfoundpage/>} />
         </Route>
 
          {/* Auth layout for signin/signup only */}
       <Route element={<Authlayout />}>
         <Route index element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/googleauth" element={<GoogleAuth/>} />
+          <Route path='*' element={<Notfoundpage/>} />
       </Route>
 </>
     )

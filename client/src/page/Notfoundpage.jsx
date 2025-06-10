@@ -17,7 +17,7 @@ function Notfoundpage() {
            </div>
             </div>
            
-           <Link to={'/home'} className='text-light nav-links btn btn-primary'>GO Back</Link>
+           <Link to={'/'} className='text-light nav-links btn btn-primary'>GO Back</Link>
         </div>
       </section>
     </div>

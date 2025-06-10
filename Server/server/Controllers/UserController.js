@@ -117,11 +117,12 @@ export const userfind = [
         }
 
         const its = finduser._id
+        const name = finduser.name
 
         const authToken = jwt.sign(data , JWT_Secret)
         return res
         .status(200)
-        .json( {authToken : authToken , message : 'login successfully', its : its}) 
+        .json( {authToken : authToken , message : 'login successfully', its : its , name:name}) 
     } catch (error) {
          return res
          .status(500)
