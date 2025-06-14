@@ -1,6 +1,7 @@
 import express from 'express'
 import { usernormal, userGet , userPost , userUpdate, userDelete , userfind , userGetToken , userinfo} from '../Controllers/UserController.js';
 import { fetchUser } from '../Middleware/fetchUser.js';
+import { Googlelogin } from '../Controllers/GoogleAuthController.js';
 
 
 const app = express();
@@ -30,5 +31,9 @@ router.post('/token',fetchUser,userGetToken)
 
 // Router.get
 router.get('/info/:id',fetchUser,userinfo)
+
+// Google auth
+Router.get('/google',Googlelogin)
+
 
 export default router;

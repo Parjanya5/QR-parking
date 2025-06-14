@@ -133,8 +133,19 @@ export const userfind = [
 
 // Post userlogin data
 
-export const userPost  = async (req,res)=>{
+export const userPost  =[
+    body ('email' , 'Enter a valid email').isEmail(), 
+    body ('password' , 'Password is required').exists(), 
+    async (req,res)=>{
     console.log(req.body)
+
+     const errors = validationResult(req)
+     if(!errors.isEmpty()){
+        return res
+        .status(400)
+        .json({error : errors.array() , message:'Invalid request'})
+     }
+   
      try {
           let user = await Userlogin.findOne({email : req.body.email})
           if(user){
@@ -165,7 +176,7 @@ export const userPost  = async (req,res)=>{
         .status(400)
         .json({message:'facing error with creating user on User Route'})
     }
-}
+}]
 
 // Update userlogin data
 

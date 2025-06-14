@@ -34,7 +34,7 @@ function Login() {
       if (fetching.ok) {
         console.log(response);
         navigate("/home");
-        toast.success(response.message);
+        toast.success(`Welcome, ${response.name}`);
         localStorage.setItem("token", response.authToken);
         localStorage.setItem("id", response.its);
       } else {
